@@ -12,11 +12,18 @@ if not MONGO_URI:
     raise ValueError("Missing MONGO_URI environment variable.")
 
 # Default database names
-MAIN_DB_NAME = os.getenv("MONGO_DB", "myFirstDatabase_local")
+MAIN_DB_NAME = os.getenv("MONGO_DB", "myFirstDatabase")
 ADDRESS_DB_NAME = os.getenv("ADDRESS_DB", "address-db")
 
 # Connect to MongoDB
-client = MongoClient(MONGO_URI)
+try:
+    client = MongoClient(MONGO_URI, serverSelectionTimeoutMS=5000)
+    client.server_info()  # Force connection on startup, raises if failed
+except Exception as e:
+    # Log and handle error appropriately
+    print(f"Failed to connect to MongoDB: {e}")
+    raise
+
 
 # Access databases
 main_db = client[MAIN_DB_NAME]
