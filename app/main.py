@@ -10,7 +10,8 @@ app = FastAPI()
 
 allow_origins = [
     "https://doorfront.org",
-    "https://www.doorfront.org"    
+    "https://www.doorfront.org",
+    "https://doorfront.org/"    
 ]
 
 # CORS middleware setup
