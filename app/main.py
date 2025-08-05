@@ -8,7 +8,7 @@ from app.tasks import update_labels_and_image_address  # import from tasks
 
 app = FastAPI()
 
-allow_origins = ["https://doorfront.org/"]
+allow_origins = ["https://doorfront.org"]
 
 # CORS middleware setup
 app.add_middleware(
