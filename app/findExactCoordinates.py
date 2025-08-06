@@ -58,7 +58,8 @@ def find_label_coordinates_by_id(label_id: str) -> Optional[Dict[str, Any]]:
                 ray = generate_3d_ray_latlon(origin, heading, pitch, zoom=zoom, use_meters=True)
                 ray_proj = ray.to_crs("EPSG:3857")
                 buildings_proj = buildings.to_crs("EPSG:3857")
-
+ 
+ 
                 # Step 5: Find intersection
                 building, intersection = get_intersection(ray_proj, buildings_proj)
 
